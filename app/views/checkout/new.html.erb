@@ -1,0 +1,13 @@
+<%= form_tag('/checkout/create', method: :post) do %>
+  <div>
+    <%= @amount %>円の商品を買う
+  </div>
+  <%= hidden_field_tag(:amount, @amount)%>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.application.secrets.stripe_publishable_key %>"
+      data-amount="<%= @amount %>"
+      data-name="チェックアウトサンプル"
+      data-locale="auto"
+      data-currency="jpy">
+  </script>
+<% end %>
